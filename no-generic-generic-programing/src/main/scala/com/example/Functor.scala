@@ -22,4 +22,14 @@ trait Functor {self =>
 
   //noinspection ApparentRefinementOfResultType
   def map(o: F {type E = self.A}, f: Fun1 {type I = self.A; type O = self.B}): F { type E = self.B }
+
+  def map(f: Fun1 {type I = self.A; type O = self.B}): Fun1 {
+    type I = F { type E = self.A }
+    type O = F { type E = self.B }
+  } = new Fun1 {
+    override type I = F { type E = self.A }
+    override type O = F { type E = self.B }
+
+    override def apply(input: F { type E = self.A }): F { type E = self.B } = self.map(input, f) 
+  }  
 }
