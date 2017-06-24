@@ -1,2 +1,12 @@
 *.class
 *.log
+
+build/
+
+.idea/
+out/
+
+*.iml
+*.ipr
+*.iws
+
